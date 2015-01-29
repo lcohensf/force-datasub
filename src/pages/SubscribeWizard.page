@@ -1,0 +1,17 @@
+<apex:page tabStyle="Subscribe_Physicians__tab" controller="SubWiz">
+<apex:pageMessages />
+<apex:sectionheader title="Subscribe to Physicians" subtitle="Search Physicians Repository by Last Name, Specialization or Zipcode"></apex:sectionheader>
+
+	<apex:form >
+		<apex:pageblock >
+            <apex:pageBlockSection columns="1" >
+                 <apex:inputText label="Last Name matches" value="{!last_name}" />&nbsp;&nbsp;OR
+                 <apex:inputText label="Specialization matches" value="{!specialization}" />&nbsp;&nbsp;OR
+                 <apex:inputText label="Zip Code matches" value="{!zipcode}" />
+            </apex:pageBlockSection>
+                        
+			<apex:commandButton value="Search" action="{!Transfer}" style="margin-left:10px;"/>
+    	</apex:pageblock>
+    </apex:form>
+    
+</apex:page>

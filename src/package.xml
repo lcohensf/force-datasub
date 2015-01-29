@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>HerokuApi</members>
+        <members>HerokuFindPhysiciansRequestMock</members>
+        <members>HerokuRequestMock</members>
+        <members>SetAPIKeys</members>
+        <members>SubWiz</members>
+        <members>SubscribeToPhysiciansController</members>
+        <members>TestHerokuApi</members>
+        <members>TestSetAPIKeys</members>
+        <members>TestSubWiz</members>
+        <members>TestSubscribeToPhysiciansController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>SubscribeToPhysicians</members>
+        <members>SubscribeWizard</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Physicians_Repository</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Physician__c-Physician Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>31.0</version>
+</Package>

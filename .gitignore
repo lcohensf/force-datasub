@@ -1,0 +1,5 @@
+Referenced Packages/**
+.project
+.settings/**
+salesforce.schema
+

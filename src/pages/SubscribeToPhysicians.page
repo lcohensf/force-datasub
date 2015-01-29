@@ -1,0 +1,65 @@
+<apex:page tabStyle="Subscribe_Physicians__tab" controller="SubscribeToPhysiciansController">
+<script type="text/javascript">
+/*
+* function to handle checkbox selection
+*/
+function doCheckboxChange(cb,itemId){
+  if(cb.checked==true){
+    aSelectItem(itemId);
+  }
+  else{
+    aDeselectItem(itemId);
+  }
+}
+ 
+</script>
+
+<apex:sectionheader title="Subscribe to Physicians" subtitle="Select Physicians to Copy Locally"></apex:sectionheader>
+
+<apex:form >
+<!-- handle selected item -->
+<apex:actionFunction name="aSelectItem" action="{!doSelectItem}" rerender="mpb">
+<apex:param name="contextItem" value="" assignTo="{!contextItem}"/>
+</apex:actionFunction>
+<!-- handle deselected item -->
+<apex:actionFunction name="aDeselectItem" action="{!doDeselectItem}" rerender="mpb">
+<apex:param name="contextItem" value="" assignTo="{!contextItem}"/>
+</apex:actionFunction>
+
+<apex:pageBlock title="" id="mpb">
+ <apex:pageBlockButtons location="top">
+      <apex:commandButton value="Subscribe to Selected Physicians" action="{!doSubscribe}"/>
+ </apex:pageBlockButtons>
+
+<!-- table of data -->
+<apex:pageBlockSection title="" columns="1" >
+    
+<apex:pageBlockTable title="Master Physicians List" value="{!physicians}" var="p">
+<apex:column >
+<apex:facet name="header">Subscribe</apex:facet>
+<apex:inputCheckbox disabled="{!p.IsDisabled}" value="{!p.IsSelected}" onchange="doCheckboxChange(this,'{!p.tPhysician.physician_id}')" />
+</apex:column>
+<apex:column headerValue="First Name" value="{!p.tPhysician.first_name}"/>
+<apex:column headerValue="Last Name" value="{!p.tPhysician.last_name}"/>
+<apex:column headerValue="Specialization" value="{!p.tPhysician.specialization}"/>
+<apex:column headerValue="Zip Code" value="{!p.tPhysician.zipcode}"/>
+<apex:column headerValue="External Physician Id" value="{!p.tPhysician.physician_id}"/>
+</apex:pageBlockTable>
+
+<!-- count of selected items -->
+<apex:outputLabel value="[{!selectedCount} records selected]" />
+<br/>
+<!-- next, previous and page info -->
+<apex:panelGrid columns="3" >
+<apex:commandLink action="{!doPrevious}" rendered="{!hasPrevious}" value="Previous" rerender="mpb"/>
+<apex:outputLabel rendered="{!NOT(hasPrevious)}" value="Previous" />
+<apex:outputLabel value=" (page {!pageNumber} of {!totalPages}) " />
+<apex:commandLink action="{!doNext}" rendered="{!hasNext}" value="Next" rerender="mpb" />
+<apex:outputLabel rendered="{!NOT(hasNext)}" value="Next" />
+</apex:panelGrid>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+ 
+ 
+</apex:page>
