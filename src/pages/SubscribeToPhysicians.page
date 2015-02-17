@@ -37,7 +37,7 @@ function doCheckboxChange(cb,itemId){
 <apex:pageBlockTable title="Master Physicians List" value="{!physicians}" var="p">
 <apex:column >
 <apex:facet name="header">Subscribe</apex:facet>
-<apex:inputCheckbox disabled="{!p.IsDisabled}" value="{!p.IsSelected}" onchange="doCheckboxChange(this,'{!p.tPhysician.physician_id}')" />
+<apex:inputCheckbox disabled="{!p.IsDisabled}" value="{!p.IsSelected}" onchange="doCheckboxChange(this,'{!JSENCODE(HTMLENCODE(p.tPhysician.physician_id))}')" />
 </apex:column>
 <apex:column headerValue="First Name" value="{!p.tPhysician.first_name}"/>
 <apex:column headerValue="Last Name" value="{!p.tPhysician.last_name}"/>
